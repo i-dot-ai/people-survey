@@ -55,8 +55,7 @@ ROOT_URLCONF = 'people_survey.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / "people_survey" / "templates"],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
