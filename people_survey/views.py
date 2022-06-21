@@ -7,3 +7,10 @@ def index_view(request):
         template_name="index.html",
         context={},
     )
+
+def page_view(request, page_num):
+    return render(
+        request,
+        template_name=f"page{page_num}.html",
+        context={},
+    )

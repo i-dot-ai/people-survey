@@ -20,5 +20,6 @@ from people_survey import views
 
 urlpatterns = [
     path("", views.index_view),
+    path("page/<int:page_num>", views.page_view),
     path("admin/", admin.site.urls),
 ]
