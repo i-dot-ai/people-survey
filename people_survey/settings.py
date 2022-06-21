@@ -56,7 +56,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.jinja2.Jinja2",
         "DIRS": [
-            BASE_DIR / "templates",
+            BASE_DIR / "people_survey" / "templates",
         ],
         "OPTIONS": {"environment": "people_survey.jinja2.environment"},
     },
