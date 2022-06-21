@@ -1,0 +1,7 @@
+asgiref==3.5.2
+Django==3.2.13
+pytz==2022.1
+PyYAML==6.0
+sqlparse==0.4.2
+watchdog==2.1.9
+whitenoise==6.2.0
