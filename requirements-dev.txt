@@ -5,4 +5,4 @@ flake8-blind-except
 pep8-naming
 black
 
--r ./requirements.txt
+-r ./requirements.lock
