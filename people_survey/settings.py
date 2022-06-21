@@ -54,8 +54,16 @@ ROOT_URLCONF = "people_survey.urls"
 
 TEMPLATES = [
     {
+        "BACKEND": "django.template.backends.jinja2.Jinja2",
+        "DIRS": [
+            BASE_DIR / "templates",
+        ],
+        "OPTIONS": {"environment": "people_survey.jinja2.environment"},
+    },
+    {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "people_survey" / "templates"],
+        "DIRS": [],
+        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
