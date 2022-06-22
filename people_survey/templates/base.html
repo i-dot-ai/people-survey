@@ -64,9 +64,14 @@
     <div class="govuk-width-container ">
       <main class="govuk-main-wrapper " id="main-content" role="main">
 
-        {% block content %}
-        {% endblock %}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
 
+            {% block content %}
+            {% endblock content %}
+
+          </div>
+        </div>
       </main>
     </div>
 
