@@ -2,4 +2,4 @@ django<3.3
 whitenoise
 watchdog[watchmedo]
 jinja2
-git+https://github.com/alphagov/govuk-frontend-jinja.git
+govuk-frontend-jinja
