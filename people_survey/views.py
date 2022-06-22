@@ -8,6 +8,7 @@ def index_view(request):
         context={},
     )
 
+
 def page_view(request, page_num):
     return render(
         request,
