@@ -4,11 +4,19 @@ from django.templatetags.static import static
 from django.urls import reverse
 
 
+
+from jinja2 import ChoiceLoader, PackageLoader, PrefixLoader
+
+
 def environment(**options):
     extra_options = dict(
-        autoescape=jinja2.select_autoescape(("html", "htm", "xml", "xhtml", "njk")),
-        extensions=[govuk_frontend_jinja.templates.NunjucksExtension],
-        undefined=govuk_frontend_jinja.templates.NunjucksUndefined,
+        loader = ChoiceLoader(
+            [
+                options['loader'],
+                PrefixLoader({"govuk_frontend_jinja": PackageLoader("govuk_frontend_jinja")}),
+            ]
+        )
+
     )
     env = jinja2.Environment(
         **{
