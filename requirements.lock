@@ -1,6 +1,6 @@
 asgiref==3.5.2
 Django==3.2.13
-govuk-frontend-jinja @ git+https://github.com/alphagov/govuk-frontend-jinja.git@ddbe208a976ffa4ca330881c506c5200dfa69851
+govuk-frontend-jinja==2.2.0
 Jinja2==3.1.2
 MarkupSafe==2.1.1
 pytz==2022.1
