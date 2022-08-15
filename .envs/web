@@ -1,1 +1,9 @@
 DJANGO_SETTINGS_MODULE=people_survey.settings
+DEBUG=True
+DJANGO_SECRET_KEY="django-insecure-gly1n7y^@cgcm2z#6lmj27+=l2ytu)g+6xo9s41)80%^l4m9-_"
+POSTGRES_HOST=organogram-db
+POSTGRES_PORT=5432
+POSTGRES_DB=organogram
+POSTGRES_USER=organogram
+POSTGRES_PASSWORD=insecure
+DATABASE_URL="postgres://people-survey:insecure@people-survey-db:5432/people-survey"
