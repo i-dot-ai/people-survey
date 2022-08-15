@@ -2,4 +2,3 @@ django<3.3
 whitenoise
 watchdog[watchmedo]
 jinja2
-govuk-frontend-jinja
