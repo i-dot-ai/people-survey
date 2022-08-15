@@ -23,6 +23,11 @@ RUN n stable
 
 RUN npm install govuk-frontend -g
 
+RUN \
+    DJANGO_SETTINGS_MODULE=organogram.settings_base \
+    DJANGO_SECRET_KEY="temp" \
+    python manage.py collectstatic --no-input
+
 COPY . /app
 
 WORKDIR /app/
