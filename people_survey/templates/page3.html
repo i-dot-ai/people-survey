@@ -1,0 +1,69 @@
+{%- from 'govuk_frontend_jinja/components/button/macro.html' import govukButton -%}
+
+{% from 'govuk_frontend_jinja/components/input/macro.html' import govukInput %}
+{% from 'govuk_frontend_jinja/components/fieldset/macro.html' import govukFieldset %}
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-l">Create an account</h1>
+  <p class="govuk-body">You need to create an account before using this service</p>
+  <h2 class="govuk-heading-m">Enter your email address</h2>
+
+  {% call govukFieldset({
+    'legend': {
+      'text': "Enter your email address",
+      'classes': "govuk-fieldset__legend--l",
+    }
+    }) %}
+
+    {{ govukInput({
+      'label': {
+        'text': 'Email address'
+      },
+      'id': 'email',
+      'name': 'email',
+      }) }}
+
+    {{ govukInput({
+      'label': {
+        'text': 'Confirm your email address'
+      },
+      'id': 'confirm_email',
+      'name': 'confirm_email',
+      }) }}
+
+  {% endcall %}
+
+  {% call govukFieldset({
+    'legend': {
+      'text': 'Create a password',
+      'classes': 'govuk-fieldset__legend--l',
+    }
+    }) %}
+
+    <p class="govuk-body">Your password should have at least 8 characters and not include your name or email address</p>
+
+    {{ govukInput({
+      'label': {
+        'text': 'Password'
+      },
+      'id': 'password',
+      'name': 'password',
+      }) }}
+
+    {{ govukInput({
+      'label': {
+        'text': 'Confirm your password'
+      },
+      'id': 'confirm_password',
+      'name': 'confirm_password',
+      }) }}
+
+  {% endcall %}
+
+  {{ govukButton({'text': 'Continue', 'href': '/page/4'}) }}
+
+{% endblock content %}
