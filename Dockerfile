@@ -16,12 +16,6 @@ RUN python3 -m pip install -r /app/requirements.lock --no-cache-dir
 COPY ./start.sh /start.sh
 RUN chmod +x /start.sh
 
-RUN apt update -y && apt install -y npm
-
-RUN npm install n -g
-RUN n stable
-
-RUN npm install govuk-frontend -g
 
 RUN \
     DJANGO_SETTINGS_MODULE=organogram.settings_base \
