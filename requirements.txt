@@ -2,3 +2,4 @@ django<3.3
 whitenoise
 watchdog[watchmedo]
 jinja2
+django-environ
