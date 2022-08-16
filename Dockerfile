@@ -16,13 +16,12 @@ RUN python3 -m pip install -r /app/requirements.lock --no-cache-dir
 COPY ./start.sh /start.sh
 RUN chmod +x /start.sh
 
+COPY . /app
 
 RUN \
-    DJANGO_SETTINGS_MODULE=organogram.settings_base \
+    DJANGO_SETTINGS_MODULE=people_survey.settings_base \
     DJANGO_SECRET_KEY="temp" \
     python manage.py collectstatic --no-input
-
-COPY . /app
 
 WORKDIR /app/
 
