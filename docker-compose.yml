@@ -16,7 +16,7 @@ services:
     volumes:
       - ./:/app/:z
     ports:
-      - "8000:8000"
+      - "8008:8008"
 
   postgres:
     image: postgres:13
