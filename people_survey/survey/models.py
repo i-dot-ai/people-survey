@@ -11,5 +11,4 @@ class Survey(models.Model):
 
 
 class Answer(models.Model):
-    user = models.ForeignKey(User, related_name="answers", on_delete=models.PROTECT)
     data = models.TextField(null=True, blank=True)
