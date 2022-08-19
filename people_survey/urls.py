@@ -21,4 +21,5 @@ from people_survey.survey import views
 urlpatterns = [
     path("", views.index_view),
     path("admin/", admin.site.urls),
+    path("api/", views.api.urls),
 ]
