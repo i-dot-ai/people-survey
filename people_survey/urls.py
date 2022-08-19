@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from people_survey import views
+from people_survey.survey import views
 
 urlpatterns = [
     path("", views.index_view),
