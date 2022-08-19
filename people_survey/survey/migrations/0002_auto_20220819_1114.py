@@ -6,20 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('survey', '0001_initial'),
+        ("survey", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Survey',
+            name="Survey",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('data', models.TextField(blank=True, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("data", models.TextField(blank=True, null=True)),
             ],
         ),
         migrations.AddField(
-            model_name='answer',
-            name='data',
+            model_name="answer",
+            name="data",
             field=models.TextField(blank=True, null=True),
         ),
     ]
