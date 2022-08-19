@@ -3,3 +3,4 @@ whitenoise
 watchdog[watchmedo]
 jinja2
 django-environ
+django-ninja
