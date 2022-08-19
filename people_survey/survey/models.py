@@ -6,5 +6,10 @@ class User(AbstractUser):
     pass
 
 
+class Survey(models.Model):
+    data = models.TextField()
+
+
 class Answer(models.Model):
     user = models.ForeignKey(User, related_name="answers", on_delete=models.PROTECT)
+    data = models.TextField()
