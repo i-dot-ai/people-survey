@@ -1,5 +1,5 @@
-from django.urls import include, path
 from django.contrib import admin
+from django.urls import include, path
 
 from people_survey.survey import views
 
@@ -8,5 +8,5 @@ urlpatterns = [
     path("home/", views.homepage_view, name="homepage"),
     path("admin/", admin.site.urls),
     path("api/", views.api.urls),
-    path('accounts/', include('allauth.urls')),
+    path("accounts/", include("allauth.urls")),
 ]
