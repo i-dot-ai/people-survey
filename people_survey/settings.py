@@ -15,6 +15,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+        'cuser',
     "people_survey.survey",
     "django.contrib.admin",
     "django.contrib.auth",
