@@ -2,7 +2,7 @@ asgiref==3.5.2
 Django==3.2.15
 django-environ==0.9.0
 django-ninja==0.19.1
-django-username-email==2.5.3
+django-use-email-as-username==1.2.0
 Jinja2==3.1.2
 MarkupSafe==2.1.1
 pydantic==1.9.2

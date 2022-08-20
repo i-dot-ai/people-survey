@@ -4,4 +4,4 @@ watchdog[watchmedo]
 jinja2
 django-environ
 django-ninja
-django-username-email
+django_use_email_as_username
