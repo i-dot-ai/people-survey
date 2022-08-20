@@ -3,7 +3,9 @@ from django.db import models
 
 
 class User(AbstractCUser):
-    pass
+    def save(self, *args, **kwargs):
+        self.email = self.email.lower()
+        super().save(*args, **kwargs)
 
 
 class Survey(models.Model):
