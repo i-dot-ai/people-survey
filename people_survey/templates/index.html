@@ -1,0 +1,14 @@
+<h1>Hello!</h1>
+
+
+<p>
+  <a href="{{url('account_login')}}">Login</a>
+</p>
+<p>
+  <a href="{{url('account_signup')}}">Register</a>
+</p>
+{% if request.user.is_authenticated %}
+  <p>
+    <a href="{{url('account_logout')}}">Logout</a>
+  </p>
+{% endif %}
