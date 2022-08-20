@@ -46,8 +46,9 @@ def survey_view(request):
 
 @api.get("/survey")
 def api_builder_get(request):
-    if Survey.objects.count():
-        survey = Survey.objects.get(1).data
+    user = request.user
+    if Survey.objects.filter(user=user).count():
+        survey = Survey.objects.filter(user=user).first().data
     else:
         survey = None
     return survey
@@ -55,14 +56,16 @@ def api_builder_get(request):
 
 @api.post("/survey")
 def api_builder_post(request, data: SurveySchema):
-    survey = Survey.objects.update_or_create(id=1, data=str(data.data))
-    return None
+    user = request.user
+    survey = Survey.objects.update_or_create(user=user, data=str(data.data))
+    return survey
 
 
 @api.get("/answer")
 def api_answer_get(request):
-    if Answer.objects.count():
-        answer = Answer.objects.first().data
+    user = request.user
+    if Answer.objects.filter(user=user).count():
+        answer = Answer.objects.filter(user=user).first().data
     else:
         answer = None
     return answer
@@ -70,5 +73,6 @@ def api_answer_get(request):
 
 @api.post("/answer")
 def api_answer_post(request, data: AnswerSchema):
-    answer = Answer.objects.update_or_create(data=str(data.data))
-    return None
+    user = request.user
+    answer = Answer.objects.update_or_create(user=user, data=str(data.data))
+    return answer

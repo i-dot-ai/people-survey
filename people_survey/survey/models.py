@@ -13,7 +13,15 @@ class User(BaseUser):
 
 class Survey(models.Model):
     data = models.TextField(null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ["data", "user"]
 
 
 class Answer(models.Model):
     data = models.TextField(null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ["data", "user"]
