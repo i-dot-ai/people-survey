@@ -4,6 +4,7 @@ from django_use_email_as_username.models import BaseUser, BaseUserManager
 
 class User(BaseUser):
     objects = BaseUserManager()
+    username = None
 
     def save(self, *args, **kwargs):
         self.email = self.email.lower()
