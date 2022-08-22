@@ -57,7 +57,7 @@ def api_builder_get(request):
 @api.post("/survey")
 def api_builder_post(request, data: SurveySchema):
     user = request.user
-    survey = Survey.objects.update_or_create(user=user, data=str(data.data))
+    survey, created = Survey.objects.update_or_create(user=user, data=str(data.data))
     return survey
 
 
@@ -74,5 +74,5 @@ def api_answer_get(request):
 @api.post("/answer")
 def api_answer_post(request, data: AnswerSchema):
     user = request.user
-    answer = Answer.objects.update_or_create(user=user, data=str(data.data))
+    answer, created = Answer.objects.update_or_create(user=user, data=str(data.data))
     return answer
