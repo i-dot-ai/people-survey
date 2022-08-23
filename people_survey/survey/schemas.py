@@ -1,9 +1,11 @@
+from typing import Optional
+
 from ninja import Schema
 
 
 class SurveySchema(Schema):
-    data: str
+    data: Optional[str] = ...
 
 
 class AnswerSchema(Schema):
-    data: str
+    data: Optional[str] = ...
