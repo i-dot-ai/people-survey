@@ -13,15 +13,9 @@ class User(BaseUser):
 
 class Survey(models.Model):
     data = models.TextField(null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    class Meta:
-        unique_together = ["data", "user"]
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
 
 
 class Answer(models.Model):
     data = models.TextField(null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    class Meta:
-        unique_together = ["data", "user"]
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
