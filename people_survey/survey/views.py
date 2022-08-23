@@ -54,6 +54,18 @@ def get_item(model, user):
     return item
 
 
+def save_item(model, user, data):
+    if not user.is_authenticated:
+        user = None
+    if model.objects.filter(user=user).count():
+        item = model.objects.filter(user=user).order_by('id').first()
+    else:
+        item = model()
+    item.data = data
+    item.save()
+    return item
+
+
 @api.get("/survey", response=SurveySchema)
 def api_builder_get(request):
     survey = get_item(models.Survey, request.user)
@@ -62,8 +74,7 @@ def api_builder_get(request):
 
 @api.post("/survey", response=SurveySchema)
 def api_builder_post(request, data: SurveySchema):
-    user = request.user
-    survey, created = Survey.objects.update_or_create(user=user, data=str(data.data))
+    survey = save_item(models.Survey, request.user, data.data)
     return survey
 
 
@@ -75,6 +86,5 @@ def api_answer_get(request):
 
 @api.post("/answer", response=AnswerSchema)
 def api_answer_post(request, data: AnswerSchema):
-    user = request.user
-    answer, created = Answer.objects.update_or_create(user=user, data=str(data.data))
+    answer = save_item(models.Answer, request.user, data.data)
     return answer
