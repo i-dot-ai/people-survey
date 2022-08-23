@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from ninja import NinjaAPI
 
-from .models import Answer, Survey
+from . import models
 from .schemas import AnswerSchema, SurveySchema
 
 api = NinjaAPI()
@@ -44,13 +44,19 @@ def survey_view(request):
     )
 
 
+def get_item(model, user):
+    if not user.is_authenticated:
+        user = None
+    if model.objects.filter(user=user).count():
+        item = model.objects.filter(user=user).first()
+    else:
+        item = {'data': None}
+    return item
+
+
 @api.get("/survey", response=SurveySchema)
 def api_builder_get(request):
-    user = request.user
-    if Survey.objects.filter(user=user).count():
-        survey = Survey.objects.filter(user=user).first().data
-    else:
-        survey = None
+    survey = get_item(models.Survey, request.user)
     return survey
 
 
@@ -63,11 +69,7 @@ def api_builder_post(request, data: SurveySchema):
 
 @api.get("/answer", response=AnswerSchema)
 def api_answer_get(request):
-    user = request.user
-    if Answer.objects.filter(user=user).count():
-        answer = Answer.objects.filter(user=user).first().data
-    else:
-        answer = None
+    answer = get_item(models.Answer, request.user)
     return answer
 
 
