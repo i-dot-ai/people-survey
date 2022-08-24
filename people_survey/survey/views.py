@@ -60,7 +60,7 @@ def save_item(model, user, data):
     if model.objects.filter(user=user).count():
         item = model.objects.filter(user=user).order_by('id').first()
     else:
-        item = model()
+        item = model(user=user)
     item.data = data
     item.save()
     return item
