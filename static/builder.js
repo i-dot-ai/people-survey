@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     creator.saveSurveyFunc = (saveNo, callback) => {
       saveSurveyJson(
-        "http://localhost:8008/api/survey",
+        "/api/survey",
         creator.JSON,
         saveNo,
         callback
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function saveSurveyJson(url, json, saveNo, callback) {
 
     fetch(
-      'http://localhost:8008/api/survey',
+      '/api/survey',
       {
         method: 'POST',
         mode: 'same-origin',
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   }
 
-  fetch('http://localhost:8008/api/survey')
+  fetch('/api/survey')
     .then((response) => response.json())
     .then((data) => loadSurvey(data['data']));
 });

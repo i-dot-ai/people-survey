@@ -16,7 +16,7 @@ function loadSurvey(surveyData, resultData) {
     data.pageNo = survey.currentPageNo;
 
     fetch(
-      'http://localhost:8008/api/answer',
+      '/api/answer',
       {
         method: 'POST',
         mode: 'same-origin',
@@ -50,7 +50,7 @@ function loadSurvey(surveyData, resultData) {
 
 document.addEventListener("DOMContentLoaded", function() {
   Promise.all([
-    fetch('http://localhost:8008/api/survey').then(resp => resp.json()),
-    fetch('http://localhost:8008/api/answer').then(resp => resp.json()),
+    fetch('/api/survey').then(resp => resp.json()),
+    fetch('/api/answer').then(resp => resp.json()),
   ]).then((result) => loadSurvey(result[0]['data'], result[1]['data']))
 });
