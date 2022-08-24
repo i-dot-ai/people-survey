@@ -11,6 +11,8 @@ DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = [
     "people-survey-develop.london.cloudapps.digital",
+    "localhost",
+    "127.0.0.1",
 ]
 
 
