@@ -48,7 +48,7 @@ def get_item(model, user):
     if not user.is_authenticated:
         user = None
     if model.objects.filter(user=user).count():
-        item = model.objects.filter(user=user).first()
+        item = model.objects.filter(user=user).order_by('id').first()
     else:
         item = {'data': None}
     return item
