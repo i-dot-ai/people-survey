@@ -23,16 +23,22 @@ function loadSurvey(data) {
 };
 
 function saveSurveyJson(url, json, saveNo, callback) {
-  const request = new XMLHttpRequest();
-  request.open('POST', url);
-  request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-  request.addEventListener('load', () => {
-    callback(saveNo, true);
-  });
-  request.addEventListener('error', () => {
-    callback(saveNo, false);
-  });
-  request.send(JSON.stringify({'data': json}));
+
+  fetch(
+    'http://localhost:8008/api/survey',
+    {
+      method: 'POST',
+      mode: 'same-origin',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({'data': json}),
+    },
+  )
+    .then(response => {callback(saveNo, true); console.log(true)})
+    .catch(error => {callback(saveNo, false); console.log(false)});
+
 }
 
 document.addEventListener("DOMContentLoaded", function() {
