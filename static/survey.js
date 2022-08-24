@@ -14,8 +14,20 @@ function loadSurvey(data) {
   function saveSurveyData(survey) {
     var data = survey.data;
     data.pageNo = survey.currentPageNo;
-    window.localStorage.setItem(storageName, JSON.stringify(data));
-  }
+
+    fetch(
+      'http://localhost:8008/api/answer',
+      {
+        method: 'POST',
+        mode: 'same-origin',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({'data': data}),
+      },
+    );
+  };
 
   survey.onPartialSend.add(function (sender) {
     saveSurveyData(sender);
