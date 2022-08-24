@@ -7,3 +7,4 @@ django-ninja
 django-allauth
 django_use_email_as_username
 waitress
+psycopg2-binary
