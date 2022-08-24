@@ -3,7 +3,7 @@ from django.views.decorators.http import require_http_methods
 from ninja import NinjaAPI
 
 from . import models
-from .schemas import AnswerSchema, SurveySchema
+from .schemas import ResultSchema, SurveySchema
 
 api = NinjaAPI()
 
@@ -78,13 +78,13 @@ def api_builder_post(request, data: SurveySchema):
     return survey
 
 
-@api.get("/answer", response=AnswerSchema)
-def api_answer_get(request):
-    answer = get_item(models.Answer, request.user)
-    return answer
+@api.get("/result", response=ResultSchema)
+def api_result_get(request):
+    result = get_item(models.Result, request.user)
+    return result
 
 
-@api.post("/answer", response=AnswerSchema)
-def api_answer_post(request, data: AnswerSchema):
-    answer = save_item(models.Answer, request.user, data.data)
-    return answer
+@api.post("/result", response=ResultSchema)
+def api_result_post(request, data: ResultSchema):
+    result = save_item(models.Result, request.user, data.data)
+    return result

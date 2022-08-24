@@ -1,4 +1,3 @@
-
 function loadSurvey(surveyData, resultData) {
 
   Survey.StylesManager.applyTheme("defaultV2");
@@ -16,7 +15,7 @@ function loadSurvey(surveyData, resultData) {
     data.pageNo = survey.currentPageNo;
 
     fetch(
-      '/api/answer',
+      '/api/result',
       {
         method: 'POST',
         mode: 'same-origin',
@@ -51,6 +50,6 @@ function loadSurvey(surveyData, resultData) {
 document.addEventListener("DOMContentLoaded", function() {
   Promise.all([
     fetch('/api/survey').then(resp => resp.json()),
-    fetch('/api/answer').then(resp => resp.json()),
+    fetch('/api/result').then(resp => resp.json()),
   ]).then((result) => loadSurvey(result[0]['data'], result[1]['data']))
 });

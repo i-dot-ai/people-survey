@@ -7,5 +7,5 @@ class SurveySchema(Schema):
     data: Optional[dict] = ...
 
 
-class AnswerSchema(Schema):
+class ResultSchema(Schema):
     data: Optional[dict] = ...
