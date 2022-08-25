@@ -1,0 +1,33 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold">{% trans "Sign Up" %}</h1>
+
+<div class="mt-4">
+  <p>{% blocktrans %}Already have an account? Then please <a class="underline text-[#1976D2]"
+      href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+</div>
+
+<div class="mt-6">
+  <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    <ul class="iai-form">
+      {{ form.as_ul }}
+    </ul>
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <div class="flex space-x-4 justify-end mt-6">
+      <button class="px-4 py-2 rounded-md bg-[#1976D2] text-white hover:bg-[#064B9A] uppercase" type="submit">
+        {% trans "Sign Up" %}
+      </button>
+    </div>
+
+  </form>
+</div>
+
+{% endblock %}

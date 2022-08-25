@@ -1,10 +1,38 @@
-<h1>Hello!</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>People Survey</title>
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="{{static('app.css')}}" type="text/css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <main>
+
+    <div class="flex h-screen">
+      <div class="m-auto bg-white p-4 rounded-md w-[545px] shadow-sm">
+        <h1 class="text-3xl font-bold">People Survey</h1>
+        <div class="flex flex-col space-y-4 mt-8">
+          <a href="{{url('builder')}}""
+            class=" underline text-[#1976D2]">Builder</a>
+          <a href="{{url('survey')}}" class="underline text-[#1976D2]">Survey</a>
+        </div>
+
+        {% if request.user.is_authenticated %}
+        <div class="flex mt-4 justify-end">
+          <a href="{{url('account_logout')}}"
+            class="px-4 py-2 rounded-md bg-[#1976D2] text-white hover:bg-[#064B9A]">Logout</a>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
 
 
-<p>
-  <a href="{{url('builder')}}">Builder</a>
-</p>
-<p>
-  <a href="{{url('survey')}}">Survey</a>
-</p>
+  </main>
+</body>
 
+</html>

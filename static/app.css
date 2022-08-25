@@ -1,0 +1,53 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(/static/images/bg_crown.svg);
+  background-repeat: no-repeat;
+  background-size: 975px;
+  background-position: top right;
+  background-color: #E9EAEC;
+}
+
+.iai-form li label {
+  margin-bottom: 8px;
+}
+
+.iai-form li input {
+  border-radius: 4px;
+}
+
+.iai-form li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.iai-signin li:last-child {
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.iai-signin li:last-child label {
+  width: 100%;
+  margin-left: 8px;
+  margin-bottom: 0;
+}
+
+.errorlist {
+  margin-bottom: -16px;
+  color: #D32F2F;
+}
