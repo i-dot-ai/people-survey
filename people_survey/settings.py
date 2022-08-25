@@ -55,7 +55,9 @@ TEMPLATES = [
     },
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / "people_survey" / "templates" / "allauth",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
