@@ -1,10 +1,21 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django_use_email_as_username.models import BaseUser, BaseUserManager
 
 
-class User(AbstractUser):
-    pass
+class User(BaseUser):
+    objects = BaseUserManager()
+    username = None
+
+    def save(self, *args, **kwargs):
+        self.email = self.email.lower()
+        super().save(*args, **kwargs)
 
 
-class Answer(models.Model):
-    user = models.ForeignKey(User, related_name="answers", on_delete=models.PROTECT)
+class Survey(models.Model):
+    data = models.JSONField(null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+
+
+class Result(models.Model):
+    data = models.JSONField(null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)

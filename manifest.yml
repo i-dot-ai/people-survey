@@ -1,0 +1,6 @@
+---
+applications:
+- name: people-survey-develop
+  memory: 512M
+  buildpacks:
+  - python_buildpack

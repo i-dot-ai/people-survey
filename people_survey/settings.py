@@ -1,11 +1,5 @@
-from .settings_base import (
-    BASE_DIR,
-    SECRET_KEY,
-    STATIC_ROOT,
-    STATIC_URL,
-    STATICFILES_DIRS,
-    env,
-)
+from .settings_base import (BASE_DIR, SECRET_KEY, STATIC_ROOT, STATIC_URL,
+                            STATICFILES_DIRS, env)
 
 SECRET_KEY = SECRET_KEY
 STATIC_URL = STATIC_URL
@@ -15,18 +9,26 @@ STATIC_ROOT = STATIC_ROOT
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "people-survey-develop.london.cloudapps.digital",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     "people_survey.survey",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.sites",
     "django.contrib.staticfiles",
 ]
 
@@ -53,7 +55,9 @@ TEMPLATES = [
     },
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / "people_survey" / "templates" / "allauth",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -74,11 +78,15 @@ WSGI_APPLICATION = "people_survey.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        **env.db("DATABASE_URL"),
+        **{"ATOMIC_REQUESTS": True},
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -120,3 +128,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 AUTH_USER_MODEL = "survey.User"
+
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATION = "none"
+LOGIN_REDIRECT_URL = "homepage"

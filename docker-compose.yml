@@ -8,9 +8,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    image: people-survey-api
     depends_on:
-      - postgres
+      - db
     env_file:
       - ./.envs/web
     volumes:
@@ -18,9 +17,8 @@ services:
     ports:
       - "8008:8008"
 
-  postgres:
+  db:
     image: postgres:13
-    container_name: people-survey-postgres
     volumes:
       - local_postgres_data:/var/lib/postgresql/data:Z
     env_file:
