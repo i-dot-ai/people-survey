@@ -1,3 +1,5 @@
+import yaml
+from django.conf import settings
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from ninja import NinjaAPI
@@ -88,3 +90,14 @@ def api_result_get(request):
 def api_result_post(request, data: ResultSchema):
     result = save_item(models.Result, request.user, data.data)
     return result
+
+
+def questions_view(request):
+    with (settings.BASE_DIR / "questions.yaml").open() as f:
+        questions = yaml.safe_load(f)
+
+    return render(
+        request,
+        template_name="questions.html",
+        context={"request": request, 'questions': questions},
+    )
