@@ -92,9 +92,11 @@ def api_result_post(request, data: ResultSchema):
     return result
 
 
-def questions_view(request):
+def questions_view(request, page_num=1):
     with (settings.BASE_DIR / "questions.yaml").open() as f:
-        questions = yaml.safe_load(f)
+        data = yaml.safe_load(f)
+
+    questions = data[page_num-1]
 
     return render(
         request,
