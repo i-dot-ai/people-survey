@@ -16,7 +16,15 @@
         <div class="m-auto bg-white p-4 rounded-md w-[545px] shadow-sm">
           <h1 class="text-3xl font-bold">{{section.title}}</h1>
 
-          {{section.questions}}
+          {% for question in section.questions %}
+            <div>
+              <p>{{question.text}}</p>
+              {% for i in range(1, 6) %}
+                <label for="{{question.id}}-{{i}}">{{i}}</label>
+                <input id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio" value="{{i}}"/>
+              {% endfor %}
+            </div>
+          {% endfor %}
 
         </div>
       </div>
