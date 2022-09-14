@@ -96,10 +96,10 @@ def questions_view(request, page_num=1):
     with (settings.BASE_DIR / "questions.yaml").open() as f:
         data = yaml.safe_load(f)
 
-    questions = data[page_num-1]
+    section = data[page_num-1]
 
     return render(
         request,
         template_name="questions.html",
-        context={"request": request, 'questions': questions},
+        context={"request": request, 'section': section},
     )
