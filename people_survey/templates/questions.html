@@ -16,6 +16,10 @@
         <div class="m-auto bg-white p-4 rounded-md w-[545px] shadow-sm">
           <h1 class="text-3xl font-bold">{{section.title}}</h1>
 
+          <form method="POST">
+
+            {{csrf_input}}
+
           {% for question in section.questions %}
             {% if question.answer_type == "agree-5-1" %}
               <div>
@@ -32,6 +36,9 @@
               </div>
             {% endif %}
           {% endfor %}
+          <input type="submit" value="Next"/>
+          </form>
+          
 
         </div>
       </div>
