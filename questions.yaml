@@ -24,3 +24,16 @@
   - id: B07
     text: I understand how my work contributes to [my organisation]’s objectives
     answer_type: agree-5-1
+
+- title: Leadership statement
+  questions:
+  - id: B60
+    text: |
+      Managers in my Area, Directorate or Division actively role model the behaviours set out in the Civil Service Leadership Statement
+      *(Please select only one option)*
+    answer_type: agree-5-1
+  - id: B60
+    text: |
+      What should managers in your Area, Directorate or Division continue to do, or do differently, to role model the behaviours set out in the Civil Service Leadership Statement?
+      *Please do not enter any information, such as employee names, which might personally identify yourself or others.*
+    answer_type: long-text
