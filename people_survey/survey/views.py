@@ -94,17 +94,27 @@ def api_result_post(request, data: ResultSchema):
 
 
 def questions_view(request, page_num=1):
+    with (settings.BASE_DIR / "questions.yaml").open() as f:
+        data = yaml.safe_load(f)
+    next_page_num = page_num + 1
+
     if request.method == "GET":
-        with (settings.BASE_DIR / "questions.yaml").open() as f:
-            data = yaml.safe_load(f)
-
         section = data[page_num-1]
-
         return render(
             request,
             template_name="questions.html",
             context={"request": request, 'section': section},
         )
     elif request.method == "POST":
-        page_num = page_num + 1
-        return redirect("questions",  page_num=page_num)
+        if page_num >= len(data):
+            return redirect("finished")
+        else:
+            return redirect("questions",  page_num=next_page_num)
+
+
+def finished_view(request):
+    return render(
+        request,
+        template_name="finished.html",
+        context={"request": request},
+    )
