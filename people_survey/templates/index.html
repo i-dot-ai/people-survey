@@ -1,14 +1,17 @@
-<h1>Hello!</h1>
+{% extends "base_generic_gov.html" %}
+{% block content %}
 
-
+<h1 class="govuk-heading-l">Hello!</h1>
 <p>
-  <a href="{{url('account_login')}}">Login</a>
+  <a class="govuk-button" href="{{url('account_login')}}">Login</a>
 </p>
 <p>
-  <a href="{{url('account_signup')}}">Register</a>
+  <a class="govuk-button" href="{{url('account_signup')}}">Register</a>
 </p>
 {% if request.user.is_authenticated %}
-  <p>
-    <a href="{{url('account_logout')}}">Logout</a>
-  </p>
+<p>
+  <a class="govuk-button" href="{{url('account_logout')}}">Logout</a>
+</p>
 {% endif %}
+
+{% endblock %}

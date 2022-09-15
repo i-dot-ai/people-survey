@@ -1,25 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base_generic_gov.html" %}
 
-  <head>
-    <title>People Survey</title>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="{{static('app.css')}}" type="text/css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
-  </head>
-
-  <body>
-    <main>
-
-      <div class="flex h-screen">
-        <div class="m-auto bg-white p-4 rounded-md w-[545px] shadow-sm">
-          <h1 class="text-3xl font-bold">Finished</h1>
-
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Survey complete
+          </h1>
         </div>
+
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+
+        <p class="govuk-body">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex distinctio eius rerum praesentium alias minima
+          excepturi voluptas pariatur ipsum laboriosam.
+        </p>
+        <p class="govuk-body">
+          Explicabo ea quidem distinctio sunt. Cumque qui consequatur
+          minima amet.
+        </p>
+
+        <p class="govuk-body">
+          <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+        </p>
       </div>
-
-    </main>
-  </body>
-
-</html>
+    </div>
+  </main>
+</div>
+{% endblock %}

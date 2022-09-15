@@ -1,48 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base_generic_gov.html" %}
 
-  <head>
-    <title>People Survey</title>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="{{static('app.css')}}" type="text/css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
-  </head>
+{% block content %}
+<div class="flex h-screen">
+  <div class="m-auto bg-white p-4 rounded-md w-[545px] shadow-sm">
+    <form method="POST">
+      {{csrf_input}}
+      <fieldset class="govuk-fieldset">
 
-  <body>
-    <main>
+        {% for question in section.questions %}
 
-      <div class="flex h-screen">
-        <div class="m-auto bg-white p-4 rounded-md w-[545px] shadow-sm">
-          <h1 class="text-3xl font-bold">{{section.title}}</h1>
+        {% if question.answer_type == "agree-5-1" %}
 
-          <form method="POST">
+        <div class="govuk-form-group">
+          <legend class="govuk-fieldset__legend">
+            {{question.text}}
+          </legend>
 
-            {{csrf_input}}
+          {% if question.hint %}
+          <div class="govuk-hint">
+            {{question.hint}}
+          </div>
+          {% endif %}
 
-            {% for question in section.questions %}
-              {% if question.answer_type == "agree-5-1" %}
-                <div>
-                  <p>{{question.text}}</p>
-                  {% for i in range(1, 6) %}
-                    <label for="{{question.id}}-{{i}}">{{i}}</label>
-                    <input id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio" value="{{i}}"/>
-                  {% endfor %}
-                </div>
-              {% elif question.answer_type == "long-text" %}
-                <div>
-                  <label for="{{question.id}}">{{question.text}}</label>
-                  <textarea id="{{question.id}}" cols="30" id="" name="" rows="10"></textarea>
-                </div>
-              {% endif %}
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            {% for i in range(1, 6) %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio"
+                value="{{i}}" />
+              <label class="govuk-label govuk-radios__label" for="{{question.id}}-{{i}}">{{i}}</label>
+            </div>
             {% endfor %}
-            <input type="submit" value="Next"/>
-          </form>
-
+          </div>
         </div>
-      </div>
 
-    </main>
-  </body>
+        {% elif question.answer_type == "long-text" %}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="{{question.id}}">
+            {{question.text}}
+          </label>
 
-</html>
+          {% if question.hint %}
+          <div class="govuk-hint">
+            {{question.hint}}
+          </div>
+          {% endif %}
+
+          <textarea class="govuk-textarea" rows="5" id="{{question.id}}" cols="30"></textarea>
+        </div>
+        {% endif %}
+
+        {% endfor %}
+      </fieldset>
+
+
+
+      <input type="submit" value="Next" class="govuk-button" data-module="govuk-button" />
+    </form>
+
+  </div>
+</div>
+{% endblock %}

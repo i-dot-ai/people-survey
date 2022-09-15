@@ -1,12 +1,9 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en" class="govuk-template app-html-class">
 
 <head>
   <meta charset="utf-8">
-  <title>{% block head_title %}{% endblock %} GOV.UK - People Survey</title>
-  {% block extra_head %}
-  {% endblock %}
+  <title>GOV.UK - People Survey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="blue">
 
@@ -35,12 +32,6 @@
 
   <meta property="og:image" content="&lt;YOUR-DOMAIN&gt;/images/govuk-opengraph-image.png">
 </head>
-
-
-
-
-
-
 
 <body class="govuk-template__body ">
   <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
@@ -81,35 +72,14 @@
   <div class="govuk-width-container ">
     <main class="govuk-main-wrapper " id="main-content" role="main">
 
-      {% block body %}
-
-      {% if messages %}
-      <div>
-        <strong>Messages:</strong>
-        <ul>
-          {% for message in messages %}
-          <li>{{message}}</li>
-          {% endfor %}
-        </ul>
-      </div>
+      {% if section %}
+      <h1 class="govuk-heading-xl">
+        {{section.title}}
+      </h1>
       {% endif %}
 
-      <div>
-        <p class="govuk-body">Menu:</p>
-        <ul class="govuk-list">
-          {% if user.is_authenticated %}
-          <li><a class="govuk-link govuk-link--no-visited-state" href="{% url 'account_email' %}">Change E-mail</a></li>
-          <li><a class="govuk-link govuk-link--no-visited-state" href="{% url 'account_logout' %}">Sign Out</a></li>
-          {% else %}
-          <li><a class="govuk-link govuk-link--no-visited-state" href="{% url 'account_login' %}">Sign In</a></li>
-          <li><a class="govuk-link govuk-link--no-visited-state" href="{% url 'account_signup' %}">Sign Up</a></li>
-          {% endif %}
-        </ul>
-      </div>
+
       {% block content %}
-      {% endblock %}
-      {% endblock %}
-      {% block extra_body %}
       {% endblock %}
     </main>
   </div>

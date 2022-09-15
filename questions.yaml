@@ -1,39 +1,39 @@
 - title: My work
   questions:
-  - id: B01
-    text: I am interested in my work
-    answer_type: agree-5-1
-  - id: B02
-    text: I am sufficiently challenged by my work
-    answer_type: agree-5-1
-  - id: B03
-    text: My work gives me a sense of personal accomplishment
-    answer_type: agree-5-1
-  - id: B04
-    text: I feel involved in the decisions that affect my work
-    answer_type: agree-5-1
-  - id: B05
-    text: I have a choice in deciding how I do my work
-    answer_type: agree-5-1
+    - id: B01
+      text: I am interested in my work
+      answer_type: agree-5-1
+    - id: B02
+      text: I am sufficiently challenged by my work
+      answer_type: agree-5-1
+    - id: B03
+      text: My work gives me a sense of personal accomplishment
+      answer_type: agree-5-1
+    - id: B04
+      text: I feel involved in the decisions that affect my work
+      answer_type: agree-5-1
+    - id: B05
+      text: I have a choice in deciding how I do my work
+      answer_type: agree-5-1
 
 - title: Organisational objectives and purpose
   questions:
-  - id: B06
-    text: I have a clear understanding of [my organisation]’s objectives
-    answer_type: agree-5-1
-  - id: B07
-    text: I understand how my work contributes to [my organisation]’s objectives
-    answer_type: agree-5-1
+    - id: B06
+      text: I have a clear understanding of [my organisation]’s objectives
+      answer_type: agree-5-1
+    - id: B07
+      text: I understand how my work contributes to [my organisation]’s objectives
+      answer_type: agree-5-1
 
 - title: Leadership statement
   questions:
-  - id: B60
-    text: |
-      Managers in my Area, Directorate or Division actively role model the behaviours set out in the Civil Service Leadership Statement
-      *(Please select only one option)*
-    answer_type: agree-5-1
-  - id: B60
-    text: |
-      What should managers in your Area, Directorate or Division continue to do, or do differently, to role model the behaviours set out in the Civil Service Leadership Statement?
-      *Please do not enter any information, such as employee names, which might personally identify yourself or others.*
-    answer_type: long-text
+    - id: B60
+      hint: Please select only one option
+      text: |
+        Managers in my Area, Directorate or Division actively role model the behaviours set out in the Civil Service Leadership Statement
+      answer_type: agree-5-1
+    - id: B60
+      hint: Please do not enter any information, such as employee names, which might personally identify yourself or others.
+      text: |
+        What should managers in your Area, Directorate or Division continue to do, or do differently, to role model the behaviours set out in the Civil Service Leadership Statement?
+      answer_type: long-text
