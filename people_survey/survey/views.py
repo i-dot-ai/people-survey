@@ -1,6 +1,7 @@
 import yaml
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 from ninja import NinjaAPI
 
@@ -93,13 +94,17 @@ def api_result_post(request, data: ResultSchema):
 
 
 def questions_view(request, page_num=1):
-    with (settings.BASE_DIR / "questions.yaml").open() as f:
-        data = yaml.safe_load(f)
+    if request.method == "GET":
+        with (settings.BASE_DIR / "questions.yaml").open() as f:
+            data = yaml.safe_load(f)
 
-    section = data[page_num-1]
+        section = data[page_num-1]
 
-    return render(
-        request,
-        template_name="questions.html",
-        context={"request": request, 'section': section},
-    )
+        return render(
+            request,
+            template_name="questions.html",
+            context={"request": request, 'section': section},
+        )
+    elif request.method == "POST":
+        page_num = page_num + 1
+        return redirect("questions",  page_num=page_num)
