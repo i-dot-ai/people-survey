@@ -2,7 +2,6 @@ import yaml
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
-from ninja import NinjaAPI
 
 from . import models
 from .schemas import ResultSchema, SurveySchema
@@ -10,8 +9,6 @@ from .schemas import ResultSchema, SurveySchema
 
 with (settings.BASE_DIR / "questions.yaml").open() as f:
     questions_data = yaml.safe_load(f)
-
-api = NinjaAPI()
 
 
 @require_http_methods(["GET"])
@@ -70,30 +67,6 @@ def save_item(model, user, data):
     item.data = data
     item.save()
     return item
-
-
-@api.get("/survey", response=SurveySchema)
-def api_builder_get(request):
-    survey = get_item(models.Survey, request.user)
-    return survey
-
-
-@api.post("/survey", response=SurveySchema)
-def api_builder_post(request, data: SurveySchema):
-    survey = save_item(models.Survey, request.user, data.data)
-    return survey
-
-
-@api.get("/result", response=ResultSchema)
-def api_result_get(request):
-    result = get_item(models.Result, request.user)
-    return result
-
-
-@api.post("/result", response=ResultSchema)
-def api_result_post(request, data: ResultSchema):
-    result = save_item(models.Result, request.user, data.data)
-    return result
 
 
 def questions_view(request, page_num=1):

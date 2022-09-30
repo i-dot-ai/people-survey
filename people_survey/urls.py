@@ -12,6 +12,5 @@ urlpatterns = [
     path("builder/", views.builder_view, name="builder"),
     path("survey/", views.survey_view, name="survey"),
     path("admin/", admin.site.urls),
-    path("api/", views.api.urls),
     path("accounts/", include("allauth.urls")),
 ]
