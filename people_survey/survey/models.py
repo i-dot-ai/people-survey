@@ -11,11 +11,6 @@ class User(BaseUser):
         super().save(*args, **kwargs)
 
 
-class Survey(models.Model):
-    data = models.JSONField(null=True, blank=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-
-
 class Result(models.Model):
     data = models.JSONField(null=True, blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
