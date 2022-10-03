@@ -26,24 +26,6 @@ def homepage_view(request):
     )
 
 
-@require_http_methods(["GET"])
-def builder_view(request):
-    return render(
-        request,
-        template_name="builder.html",
-        context={"request": request},
-    )
-
-
-@require_http_methods(["GET"])
-def survey_view(request):
-    return render(
-        request,
-        template_name="survey.html",
-        context={"request": request},
-    )
-
-
 def get_item(model, user):
     if not user.is_authenticated:
         user = None
