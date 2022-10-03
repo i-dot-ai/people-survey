@@ -48,9 +48,9 @@ def get_item(model, user):
     if not user.is_authenticated:
         user = None
     if model.objects.filter(user=user).count():
-        item = model.objects.filter(user=user).order_by('id').first()
+        item = model.objects.filter(user=user).order_by("id").first()
     else:
-        item = {'data': None}
+        item = {"data": None}
     return item
 
 
@@ -58,7 +58,7 @@ def save_item(model, user, data):
     if not user.is_authenticated:
         user = None
     if model.objects.filter(user=user).count():
-        item = model.objects.filter(user=user).order_by('id').first()
+        item = model.objects.filter(user=user).order_by("id").first()
     else:
         item = model(user=user)
     item.data = data
@@ -68,18 +68,18 @@ def save_item(model, user, data):
 
 def questions_view(request, page_num=1):
     if request.method == "GET":
-        section = questions_data[page_num-1]
+        section = questions_data[page_num - 1]
         return render(
             request,
             template_name="questions.html",
-            context={"request": request, 'section': section},
+            context={"request": request, "section": section},
         )
     elif request.method == "POST":
         if page_num >= len(questions_data):
             return redirect("finished")
         else:
             next_page_num = page_num + 1
-            return redirect("questions",  page_num=next_page_num)
+            return redirect("questions", page_num=next_page_num)
 
 
 def finished_view(request):
