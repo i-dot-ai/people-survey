@@ -1,5 +1,11 @@
-from .settings_base import (BASE_DIR, SECRET_KEY, STATIC_ROOT, STATIC_URL,
-                            STATICFILES_DIRS, env)
+from .settings_base import (
+    BASE_DIR,
+    SECRET_KEY,
+    STATIC_ROOT,
+    STATIC_URL,
+    STATICFILES_DIRS,
+    env,
+)
 
 SECRET_KEY = SECRET_KEY
 STATIC_URL = STATIC_URL
@@ -135,4 +141,4 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_USERNAME_REQUIRED = False
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
-LOGIN_REDIRECT_URL = "homepage"
+LOGIN_REDIRECT_URL = "questions"
