@@ -3,9 +3,6 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
 
-from . import models
-from .schemas import ResultSchema, SurveySchema
-
 
 with (settings.BASE_DIR / "questions.yaml").open() as f:
     questions_data = yaml.safe_load(f)
