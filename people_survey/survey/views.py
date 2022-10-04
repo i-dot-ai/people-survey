@@ -61,10 +61,12 @@ def save_item(model, user, data, update=False):
 def add_existing_responses(section_data, existing_results):
     questions_with_responses = []
     for question in section_data["questions"]:
-        q_id = question["id"]
-        val = existing_results.get(q_id)
-        if isinstance(val, int):
+        question_id = question["id"]
+        val = existing_results.get(question_id)
+        try:
             val = int(val)
+        except (ValueError, TypeError):
+            pass
         question["existing_value"] = val
         questions_with_responses.append(question)
 
@@ -81,10 +83,15 @@ def questions_view(request, page_num=1):
     user = request.user
     if request.method == "GET":
         existing_results = get_item(Result, user)
+        if existing_results.data:
+            existing_results = existing_results.data
+        else:
+            existing_results = {}
         section = questions_data[page_num - 1]
         updated_section_data = add_existing_responses(
             section_data=section, existing_results=existing_results
         )
+        print(updated_section_data)
         return render(
             request,
             template_name="questions.html",
