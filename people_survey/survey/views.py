@@ -62,7 +62,7 @@ def add_existing_responses(section_data, existing_results):
     questions_with_responses = []
     for question in section_data["questions"]:
         question_id = question["id"]
-        val = existing_results.get(question_id)
+        val = existing_results.get(question_id, "")
         try:
             val = int(val)
         except (ValueError, TypeError):
@@ -91,7 +91,6 @@ def questions_view(request, page_num=1):
         updated_section_data = add_existing_responses(
             section_data=section, existing_results=existing_results
         )
-        print(updated_section_data)
         return render(
             request,
             template_name="questions.html",

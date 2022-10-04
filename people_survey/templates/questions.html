@@ -34,7 +34,6 @@
             {% for i in range(1, 6) %}
             <div class="govuk-radios__item">
               {% if question.existing_value == i %}
-                ha
                 <input class="govuk-radios__input" id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio"
                   value="{{i}}" checked />
               {% else %}
@@ -59,7 +58,7 @@
           </div>
           {% endif %}
 
-          <textarea class="govuk-textarea" rows="5" id="{{question.id}}" cols="30"></textarea>
+          <textarea class="govuk-textarea" rows="5" id="{{question.id}}" cols="30">{{question.existing_value}}</textarea>
         </div>
         {% endif %}
 
