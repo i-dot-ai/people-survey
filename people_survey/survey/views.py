@@ -37,7 +37,6 @@ def get_item(model, user):
     return item
 
 
-# TODO - tidy this
 def save_item(model, user, data, update=False):
     if not user.is_authenticated:
         user = None
@@ -59,15 +58,37 @@ def save_item(model, user, data, update=False):
     return item
 
 
+def add_existing_responses(section_data, existing_results):
+    questions_with_responses = []
+    for question in section_data["questions"]:
+        q_id = question["id"]
+        val = existing_results.get(q_id)
+        if isinstance(val, int):
+            val = int(val)
+        question["existing_value"] = val
+        questions_with_responses.append(question)
+
+    updated_section_data = {}
+    for k, v in section_data.items():
+        if k != "questions":
+            updated_section_data[k] = v
+        else:
+            updated_section_data["questions"] = questions_with_responses
+    return updated_section_data
+
+
 def questions_view(request, page_num=1):
     user = request.user
     if request.method == "GET":
-        result = get_item(Result, user)  # TODO - populate with existing data
+        existing_results = get_item(Result, user)
         section = questions_data[page_num - 1]
+        updated_section_data = add_existing_responses(
+            section_data=section, existing_results=existing_results
+        )
         return render(
             request,
             template_name="questions.html",
-            context={"request": request, "section": section},
+            context={"request": request, "section": updated_section_data},
         )
     elif request.method == "POST":
         data = request.POST

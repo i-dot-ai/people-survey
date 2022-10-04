@@ -32,9 +32,16 @@
 
           <div class="govuk-radios govuk-radios--small " data-module="govuk-radios">
             {% for i in range(1, 6) %}
+            {{i}}
+            {{question.existing_value}}
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio"
-                value="{{i}}" />
+              {% if question.existing_value == i %}
+                <input class="govuk-radios__input" id="{{question.id}}-{{v}}" name="{{question.id}}" type="radio"
+                  value="{{v}}" checked />
+              {% else %}
+                <input class="govuk-radios__input" id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio"
+                  value="{{i}}" />
+              {% endif %}
               <label class="govuk-label govuk-radios__label" for="{{question.id}}-{{i}}">{{i}}</label>
             </div>
             {% endfor %}
