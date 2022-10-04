@@ -1,10 +1,9 @@
 import yaml
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
 from django.views.decorators.http import require_http_methods
 
 from people_survey.survey.models import Result
-
 
 with (settings.BASE_DIR / "questions.yaml").open() as f:
     questions_data = yaml.safe_load(f)
@@ -63,7 +62,7 @@ def save_item(model, user, data, update=False):
 def questions_view(request, page_num=1):
     user = request.user
     if request.method == "GET":
-        result = get_item(Result, user) # TODO - populate with existing data
+        result = get_item(Result, user)  # TODO - populate with existing data
         section = questions_data[page_num - 1]
         return render(
             request,

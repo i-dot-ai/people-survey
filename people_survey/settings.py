@@ -1,11 +1,5 @@
-from .settings_base import (
-    BASE_DIR,
-    SECRET_KEY,
-    STATIC_ROOT,
-    STATIC_URL,
-    STATICFILES_DIRS,
-    env,
-)
+from .settings_base import (BASE_DIR, SECRET_KEY, STATIC_ROOT, STATIC_URL,
+                            STATICFILES_DIRS, env)
 
 SECRET_KEY = SECRET_KEY
 STATIC_URL = STATIC_URL
