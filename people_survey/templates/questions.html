@@ -1,5 +1,9 @@
 {% extends "base_generic_gov.html" %}
 
+{% block backButton %}
+<a class="govuk-button" data-module="govuk-button" href="javascript:history.back()">Back</a>
+{% endblock %}
+
 {% block content %}
 <div class="flex h-screen">
   <div class="m-auto bg-white p-4 rounded-md w-[545px] shadow-sm">
@@ -12,8 +16,12 @@
         {% if question.answer_type == "agree-5-1" %}
 
         <div class="govuk-form-group">
-          <legend class="govuk-fieldset__legend">
-            {{question.text}}
+
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              {{question.text}}
+            </h1>
           </legend>
 
           {% if question.hint %}
@@ -22,7 +30,7 @@
           </div>
           {% endif %}
 
-          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+          <div class="govuk-radios govuk-radios--small " data-module="govuk-radios">
             {% for i in range(1, 6) %}
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio"
