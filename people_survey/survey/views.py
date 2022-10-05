@@ -86,9 +86,7 @@ def questions_view(request, page_num=1):
             if result.data:
                 existing_results = result.data
         section = questions_data[page_num - 1]
-        updated_section_data = add_existing_responses(
-            section_data=section, existing_results=existing_results
-        )
+        updated_section_data = add_existing_responses(section_data=section, existing_results=existing_results)
         return render(
             request,
             template_name="questions.html",
