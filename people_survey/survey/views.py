@@ -32,9 +32,7 @@ def get_item(model, user):
         user = None
     if model.objects.filter(user=user).count():
         item = model.objects.filter(user=user).order_by("id").first()
-    else:
-        item = {"data": None}
-    return item
+        return item
 
 
 def save_item(model, user, data, update=False):
@@ -82,11 +80,11 @@ def add_existing_responses(section_data, existing_results):
 def questions_view(request, page_num=1):
     user = request.user
     if request.method == "GET":
-        existing_results = get_item(Result, user)
-        if existing_results.data:
-            existing_results = existing_results.data
-        else:
-            existing_results = {}
+        existing_results = {}
+        result = get_item(Result, user)
+        if result:
+            if result.data:
+                existing_results = result.data
         section = questions_data[page_num - 1]
         updated_section_data = add_existing_responses(
             section_data=section, existing_results=existing_results
