@@ -15,23 +15,49 @@
 
         {% if question.answer_type == "agree-5-1" %}
 
-        <div class="govuk-form-group">
-
-
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            <h1 class="govuk-fieldset__heading">
-              {{question.text}}
-            </h1>
-          </legend>
-
-          {% if question.hint %}
-          <div class="govuk-hint">
-            {{question.hint}}
+        {% if loop.previtem and loop.previtem.answer_type == "agree-5-1" %}
+        {% else %}
+        <div class="i-ai-range custom-legend">
+          <div>
+            <span class="label">Strongly agree</span>
+            <span>5</span>
           </div>
-          {% endif %}
+          <div>
+            <span class="label">Agree</span>
+            <span>4</span>
+          </div>
+          <div>
+            <span class="label">Neither Agree agree nor disagree</span>
+            <span>3</span>
+          </div>
+          <div>
+            <span class="label">Disagree</span>
+            <span>2</span>
+          </div>
+          <div>
+            <span class="label">Strongly disagree</span>
+            <span>1</span>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="i-ai-range govuk-form-group">
+          <span>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                {{question.text}}
+              </h1>
+            </legend>
+
+            {% if question.hint %}
+            <div class="govuk-hint">
+              {{question.hint}}
+            </div>
+            {% endif %}
+          </span>
 
           <div class="govuk-radios govuk-radios--small " data-module="govuk-radios">
-            {% for i in range(1, 6) %}
+            {% for i in range(5, 0, -1) %}
             <div class="govuk-radios__item">
               {% if question.existing_value == i %}
                 <input class="govuk-radios__input" id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio"
