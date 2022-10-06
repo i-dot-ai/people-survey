@@ -33,8 +33,13 @@
           <div class="govuk-radios govuk-radios--small " data-module="govuk-radios">
             {% for i in range(1, 6) %}
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio"
-                value="{{i}}" />
+              {% if question.existing_value == i %}
+                <input class="govuk-radios__input" id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio"
+                  value="{{i}}" checked />
+              {% else %}
+                <input class="govuk-radios__input" id="{{question.id}}-{{i}}" name="{{question.id}}" type="radio"
+                  value="{{i}}" />
+              {% endif %}
               <label class="govuk-label govuk-radios__label" for="{{question.id}}-{{i}}">{{i}}</label>
             </div>
             {% endfor %}
@@ -53,7 +58,7 @@
           </div>
           {% endif %}
 
-          <textarea class="govuk-textarea" rows="5" id="{{question.id}}" cols="30"></textarea>
+          <textarea class="govuk-textarea" rows="5" id="{{question.id}}" name="{{question.id}}" cols="30">{{question.existing_value}}</textarea>
         </div>
         {% endif %}
 
